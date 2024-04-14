@@ -1,0 +1,61 @@
+.container {
+    height: 50vh;
+    margin-top: 30%;
+    padding: 10%;
+    background: rgb(9, 9, 9);
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* Prevent content overflow outside the container */
+  }
+  
+  .container .feature {
+    height: 100%;
+    width: 30%;
+    color: white;
+    text-align: center;
+    border-color: white;
+    border-style: solid;
+    border-radius: 1em;
+    padding: 1%;
+    margin: 1%;
+    position: relative; /* Enable positioning of child elements */
+  }
+  
+  .container .feature .heading {
+    padding: 1%;
+    padding-bottom: 5%;
+    font-weight: bold;
+  }
+  
+  .container .feature .con,
+  .container .feature .vegcon {
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    padding-bottom: 10%; /* Adjust padding for better button placement */
+  }
+  
+  .feature .getStarted button {
+    padding: 1%;
+    border: 3px solid white;
+    border-radius: 10em;
+    width: 40%;
+    margin: auto;
+    font-weight: bold;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%; /* Match the height of the feature box */
+    position: absolute; /* Make button absolute within the feature box */
+    bottom: 10%; /* Position button at the bottom with some padding */
+    left: 50%; /* Center button horizontally */
+    transform: translateX(-50%); /* Offset button by half its width to achieve correct centering */
+  }
+  
+  .feature .getStarted button:hover {
+    color: cyan;
+    border-color: cyan;
+    transition: 1s;
+  }
+  

@@ -1,0 +1,106 @@
+.navbar {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white; /* Adjust color as needed */
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  transition: background-color 0.3s ease, background-color 0.3s ease hover;
+  z-index: 2; /* Higher z-index */
+}
+
+
+.navbar.scrolled {
+  background-color: #00090ff8; /* Adjust background color on scroll */
+}
+
+.logo
+{
+  width: 15%;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+
+.mid-options
+{
+  width: 55%;
+  padding: 4%;
+  margin: a;
+}
+
+.mid-options,
+.right-options {
+  display: flex;
+  list-style: none; /* Remove default bullet points */
+  margin: 0; /* Remove default margins */
+  justify-content: center;
+}
+
+.mid-options li,
+.right-options li {
+  display: inline-flex; /* Treat list items as inline elements */
+  align-items: center;
+  padding: 2% 7%; /* Adjust padding as needed */
+  cursor: pointer; /* Add hover effect for clickable elements */
+  font-size: 1.2rem; /* Increase font size here. Adjust as needed */
+  transition: color 0.3s ease; /* Transition for text color change */
+  padding-bottom: 2%;
+}
+
+.right-options
+{
+  width: 30%;
+  margin: auto auto;
+  justify-content: center;
+}
+
+.home .fa-home,
+.about .fa-question-circle,
+.upload .fa-upload,
+.compare .fa-code-compare,
+.signup .fa-outline-user,
+.signin .fa-outline-login {
+  /* Style icons here. Adjust margin/padding as needed */
+  margin-right: 5px;
+  font-size: 1.2rem; /* Increase icon size (optional). Adjust as needed */
+}
+
+/* Underline styling with delay (white color) */
+.mid-options li:after,
+.right-options li:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px; /* Adjust underline thickness */
+  background-color: white; /* Underline color */
+  transform: scaleX(0); /* Initially hidden underline */
+  transition: transform 0.5s ease; /* Delay underline animation */
+}
+
+/* Show underline on hover (only for hovered element) */
+.mid-options li:hover:after,
+.right-options li:hover:after {
+  transform: scaleX(1); /* Show underline on hover */
+}
+
+/* Reset underline styles for non-hovered elements */
+.mid-options li:not(:hover):after,
+.right-options li:not(:hover):after {
+  background-color: transparent; /* Hide underline for non-hovered elements */
+}
+
+/* Hover styles for list items (color change) */
+.mid-options li:hover,
+.right-options li:hover {
+  color: cyan; /* Text color on hover */
+  transform: scaleX(1);
+}
