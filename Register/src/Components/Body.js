@@ -1,5 +1,5 @@
-// Body.js
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Body.css';
 
 const Body = () => {
@@ -9,14 +9,20 @@ const Body = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    // Add your registration logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Username:', username);
-    console.log('First Name:', firstName);
-    console.log('Last Name:', lastName);
+    try {
+      await axios.post('/api/register', {
+        email,
+        password,
+        username,
+        firstName,
+        lastName,
+      });
+      console.log('Registration successful!');
+    } catch (error) {
+      console.error('Registration failed:', error);
+    }
   };
 
   return (
