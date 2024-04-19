@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #333;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  padding-top: 10%;
+  margin: auto;
+}
+
+.login-container {
+  display: flex;
+  background-color: rgba(19, 19, 19, 0.8);
+  border-radius: 20px;
+  box-shadow: none;
+  width: 100%;
+  height: 40rem;
+  color: #5c5c5c;
+  margin-bottom: 10%;
+  overflow: hidden; /* Add this line to hide any part of the image that exceeds the container */
+}
+
+.illustration-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(110, 110, 110, 0.8);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.illustration-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.login-content {
+  flex: 1;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(19, 19, 19, 0.8);
+  border-radius: 20px;
+}
+
+h2 {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form-group input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #ffffff;
+  outline: none;
+  width: 100%;
+}
+
+.login-button,
+.form-group a {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border: solid;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.login-button:hover,
+.form-group a:hover {
+  background-color: #7c7c7c;
+  color: #ffffff;
+}
+
+.forgot-password {
+  text-align: end;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.forgot-password-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: color 0.5s ease-in-out;
+}
+
+.forgot-password-button:hover {
+  text-decoration: underline;
+  color: #e6e6e6;
+}

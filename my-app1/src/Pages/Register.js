@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Body.css';
+import './Register.css';
 
-const Body = () => {
+const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
@@ -12,16 +12,17 @@ const Body = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/api/register', {
+      // Send a POST request to the server with the registration data
+      const response = await axios.post('/api/register', {
         email,
         password,
         username,
         firstName,
         lastName,
       });
-      console.log('Registration successful!');
+      console.log(response.data.message); // Log the response message
     } catch (error) {
-      console.error('Registration failed:', error);
+      console.error('Registration failed:', error.response.data.error);
     }
   };
 
@@ -109,4 +110,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default Register;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { FaBeer, FaUpload, FaHome, FaQuestionCircle } from 'react-icons/fa';
@@ -29,10 +29,14 @@ const Navbar = () => {
       </div>
       <ul className="mid-options">
         <li className="home">
-          <FaHome /> Home
+          <Link to="/">
+            <FaHome /> Home
+          </Link>
         </li>
         <li className="about">
-          <FaQuestionCircle /> About
+          <Link to="/about">
+            <FaQuestionCircle /> About
+          </Link>
         </li>
         <li className="upload">
           <FaUpload /> Upload
@@ -43,10 +47,12 @@ const Navbar = () => {
       </ul>
       <ul className="right-options">
         <li className="signup">
-          <AiOutlineUser /> Sign Up
+        <Link to="/register">
+          <AiOutlineUser /> Sign Up</Link>
         </li>
         <li className="signin">
-          <AiOutlineLogin /> Sign In
+        <Link to="/Login">
+          <AiOutlineLogin /> Sign In</Link>
         </li>
       </ul>
     </nav>
