@@ -1,4 +1,4 @@
-import './Homepage.css'
+import './styles/Homepage.css'
 
 const Homepage = () => {
   const scrollToFeatures = event => {

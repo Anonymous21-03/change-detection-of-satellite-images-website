@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './changeDetection.css';
+import './styles/changeDetection.css';
 
 const ChangeDetection = () => {
   // States for image, date, and region functionality
