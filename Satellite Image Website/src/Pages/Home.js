@@ -1,5 +1,5 @@
 import Features from './Features'
-import './Home.css'
+import './styles/Home.css'
 import Homepage from './Homepage'
 
 // Import other components specific to Home page content
