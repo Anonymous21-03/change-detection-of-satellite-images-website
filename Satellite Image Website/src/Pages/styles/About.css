@@ -1,120 +1,214 @@
-/* body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; */
-  /* background-color: #333; */
-  /* background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-} */
-  
 .container {
   background-image: none;
-  background-color: #777777;
-  /* padding-top: 5%; // Optional, uncomment if needed */
+  background-color: #fff;
 }
 
 .about_us_head {
-  /* Set background image for about_us class */
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url("../doodle.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height: 70vh;
   display: flex;
-  align-items: center; /* Center content vertically */
-  justify-content: center; /* Center content horizontally */
-  padding: 2rem; /* Optional padding around the text */
-  color: white; /* Text color */
-  font-size: 5rem; /* Large font size (adjust as needed) */
-  font-weight: bold; /* Bold font (optional) */
-  text-align: center; /* Center the text within the element */
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: white;
+  font-size: 5rem;
+  font-weight: bold;
+  text-align: center;
   margin-bottom: 5%;
+  opacity: 0; /* Set initial opacity to 0 */
+  transform: translateY(-50px); /* Initial position above the viewport */
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Add transition */
 }
 
-
+.about_us_head.visible {
+  opacity: 1; /* Opacity when visible */
+  transform: translateY(0); /* Final position */
+}
 
 .subhead {
-  text-align: center; /* Center the text */
-  color: rgb(0, 0, 0); /* Set text color to black */
-  /* Add double lines as decoration (before and after) */
+  text-align: center;
+  color: rgb(0, 0, 0);
   text-decoration: underline overline;
-  /* Adjust line style, thickness, and color (optional) */
   text-decoration-style: solid;
-  text-decoration-color: #686868; /* Light gray underline */
-  text-decoration-thickness: 2px; /* Optional: Thicker underline */
-  /* margin-bottom: 5%; */
-  /* Increase font size for the subhead */
-  font-size: 1.5rem; /* Adjust as needed */
+  text-decoration-color: #686868;
+  text-decoration-thickness: 2px;
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 .mainbod {
-  display: flex; /* Arrange elements side-by-side */
-  margin-bottom: 0%;
-  justify-content: center; /* Remove horizontal centering */
-  width: 100%; /* Make the mainbod take full width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("../doodle.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+  transition: background-size 1s ease-in-out;
+  min-height: 200px;
 }
 
-.image-container {
-  flex: 0 0 40%; /* Set width for photo (adjust as needed) */
-  margin: 0% 6%; /* Add margin for spacing */
-  display: flex; /* Use flexbox for vertical centering */
-  align-items: center; /* Align content vertically within .photo */
-}
-
-.image-container.left {
-  justify-content: flex-start; /* Align image to the left */
-}
-
-.image-container.right {
-  justify-content: flex-end; /* Align image to the right */
-}
-
-.image-container img {
-  /* border-radius: 10px; Smooth corners for the image */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Box shadow effect */
-  width: 80%; /* Adjust width as needed */
-  height: 70%; /* Adjust height as needed */
-  object-fit: cover; /* Maintain aspect ratio if needed */
-  /* Add a thin white border */
-  border: 2px solid rgb(0, 156, 254);
-  /* Transition for hover effect */
-  transition: transform 0.3s ease-in-out;
-}
-
-/* Style for image on hover */
-.image-container img:hover {
-  /* Increase image size slightly on hover */
-  transform: scale(1.1);
-  /* Add a slight blue border on hover */
-  border: 2px solid #3399FF;
+.mainbod:hover {
+  background-size: 110%;
 }
 
 .text-container {
-  flex: 0 0 30%; /* Set the width to 30% of the available space */
-  text-align: justify; /* Justified text alignment */
-  color: black; /* Text color */
-  margin: 1rem; /* Add margin for spacing */
-  font-size: 1.2rem; /* Adjust as needed */
+  width: 40%;
+  text-align: justify;
+  color: white;
+  font-size: 1.5rem;
   display: flex;
-  align-items: center; /* Center the text vertically */
-  justify-content: center; /* Center the text horizontally */
-  flex-direction: column; /* Stack the feature name and text vertically */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
 .feature-name {
-  font-size: 3rem; /* Increase the font size for feature names */
-  font-weight: bold; /* Optional: Make the feature names bold */
-  text-align: center; /* Center the feature names */
-  margin-bottom: 1rem; /* Add some spacing below the feature names */
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .feature-name p {
-  /* Styles for paragraphs following the feature name */
   color: #808080;
   font-size: 1.4rem;
-  margin-top: 0.5rem; /* Add some margin on top */
+  margin-top: 0.5rem;
+}
+
+p, .feature-name {
+  color: white;
+}
+
+/* Transition effects */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.slide-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.zoom-in {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.zoom-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Feature card layout */
+.feature-card-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+  width: 100vw;
+  position: relative;
+}
+
+.feature-card {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("../doodle.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2rem;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  width: 100vw;
+  opacity: 1;
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+}
+
+.feature-card.fade-out {
+  opacity: 0;
+}
+
+.prev-card, .next-card {
+  background-color: #333;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  position: absolute; /* Position arrows absolutely */
+  z-index: 1;
+}
+
+.prev-card {
+  left: 1rem; /* Position previous arrow on the left */
+}
+
+.next-card {
+  right: 1rem; /* Position next arrow on the right */
+}
+
+.prev-card:hover, .next-card:hover {
+  background-color: #666;
+  transform: scale(1.2);
+}
+
+/* Footer Styles */
+footer {
+  background-color: #f2f2f2;
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-links a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #666;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: #666;
 }
