@@ -5,10 +5,8 @@ import { FaBeer, FaUpload, FaHome, FaQuestionCircle } from 'react-icons/fa';
 import { FaCodeCompare } from 'react-icons/fa6';
 import { AiOutlineUser, AiOutlineLogin } from 'react-icons/ai';
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, username, handleLogout }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -19,18 +17,9 @@ const Navbar = () => {
         setIsScrolled(false);
       }
     });
+
     return () => window.removeEventListener('scroll', null);
   }, []);
-
-  const handleLogin = (user) => {
-    setIsLoggedIn(true);
-    setUsername(user.username);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUsername('');
-  };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>

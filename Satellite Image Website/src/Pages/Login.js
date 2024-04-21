@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './styles/Login.css';
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const handleLoginSuccess = async (data) => {
+    console.log('Login successful:', data);
+    handleLogin(data); // Call the handleLogin function from App.js
+  };
 
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch('/api/login', {
         method: 'POST',
@@ -17,12 +21,10 @@ const Login = () => {
         },
         body: JSON.stringify({ username, password }),
       });
-
       if (response.ok) {
         // User is authenticated, handle the successful login
         const data = await response.json();
-        console.log('Login successful:', data);
-        // Redirect the user or perform any other necessary actions
+        handleLoginSuccess(data);
       } else {
         // Handle the failed login
         const error = await response.json();
@@ -43,7 +45,7 @@ const Login = () => {
           </div>
           <div className="login-content">
             <h2>Welcome Back!</h2>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleLoginSubmit}>
               <div className="form-group">
                 <input
                   type="text"
@@ -77,7 +79,7 @@ const Login = () => {
                 <button type="submit" className="login-button">
                   Sign in
                 </button>
-                <Link to='/register'>Sign Up</Link>
+                <Link to="/register">Sign Up</Link>
               </div>
             </form>
           </div>
