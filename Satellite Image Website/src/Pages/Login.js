@@ -2,15 +2,38 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './styles/Login.css';
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (e) => {
+  const handleLoginSuccess = async (data) => {
+    console.log('Login successful:', data);
+    const user = { username: data.username }; // Assuming the server response includes the username property
+    handleLogin(user); // Call the handleLogin function from App.js
+  };
+
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    // Add your login logic here
-    console.log('Username:', username);
-    console.log('Password:', password);
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      if (response.ok) {
+        // User is authenticated, handle the successful login
+        const data = await response.json();
+        handleLoginSuccess(data);
+      } else {
+        // Handle the failed login
+        const error = await response.json();
+        console.error('Login failed:', error.message);
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
   };
 
   return (
@@ -23,7 +46,7 @@ const Login = () => {
           </div>
           <div className="login-content">
             <h2>Welcome Back!</h2>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleLoginSubmit}>
               <div className="form-group">
                 <input
                   type="text"
@@ -57,7 +80,7 @@ const Login = () => {
                 <button type="submit" className="login-button">
                   Sign in
                 </button>
-                <Link to='/register'>Sign Up</Link>
+                <Link to="/register">Sign Up</Link>
               </div>
             </form>
           </div>
