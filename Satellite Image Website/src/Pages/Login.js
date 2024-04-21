@@ -8,7 +8,9 @@ const Login = ({ handleLogin }) => {
 
   const handleLoginSuccess = async (data) => {
     console.log('Login successful:', data);
-    handleLogin(data); // Call the handleLogin function from App.js
+    // Assuming the server response includes the username in the 'message' property
+    const user = { username: data.message.split(' ')[2] };
+    handleLogin(user); // Call the handleLogin function from App.js
   };
 
   const handleLoginSubmit = async (e) => {
