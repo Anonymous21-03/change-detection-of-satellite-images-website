@@ -45,7 +45,7 @@ app.post('/api/login', async (req, res) => {
 
     if (user) {
       // User is authenticated
-      res.status(200).json({ message: 'Login successful' });
+      res.status(200).json({ message: 'Login successful', username: user.username });
     } else {
       // User is not authenticated
       res.status(401).json({ message: 'Invalid username or password' });
