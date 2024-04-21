@@ -47,10 +47,17 @@ const Navbar = ({ isLoggedIn, username, handleLogout }) => {
       <ul className="right-options">
         {isLoggedIn ? (
           <li className="user-info">
-            <span className="username">{username}</span>
-            <button className="logout-button" onClick={handleLogout}>
-              Logout
-            </button>
+            <div className="username">
+              {username}
+              <span className="arrow-down"></span>
+            </div>
+            <div className="dropdown-menu">
+              <Link to="/profile">Profile</Link>
+              <Link to="/settings">Settings</Link>
+              <Link to="/" onClick={handleLogout}>
+                Logout
+              </Link>
+            </div>
           </li>
         ) : (
           <>
