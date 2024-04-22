@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import About from './Pages/About';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
+import LandCoverClassificationPage from './Pages/LandCoverClassificationPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,6 +26,7 @@ function App() {
       <Navbar isLoggedIn={isLoggedIn} username={username} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path = "/landcover" element = {<LandCoverClassificationPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
         <Route path="/Login" element={<Login handleLogin={handleLogin} />} />
