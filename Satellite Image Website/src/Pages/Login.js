@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './styles/Login.css';
 
 const Login = ({ handleLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLoginSuccess = async (data) => {
     console.log('Login successful:', data);
-    const user = { username: data.username }; // Assuming the server response includes the username property
-    handleLogin(user); // Call the handleLogin function from App.js
+    const user = { username: data.username };
+    handleLogin(user);
+    navigate('/');
   };
 
   const handleLoginSubmit = async (e) => {
@@ -23,11 +25,9 @@ const Login = ({ handleLogin }) => {
         body: JSON.stringify({ username, password }),
       });
       if (response.ok) {
-        // User is authenticated, handle the successful login
         const data = await response.json();
         handleLoginSuccess(data);
       } else {
-        // Handle the failed login
         const error = await response.json();
         console.error('Login failed:', error.message);
       }

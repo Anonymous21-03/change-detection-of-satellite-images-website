@@ -1,0 +1,37 @@
+.error-message-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .error-message-box {
+    background-color: rgba(255, 0, 0, 0.8);
+    color: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    animation: slideInRight 0.5s ease;
+  }
+  
+  .close-button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+  
+  @keyframes slideInRight {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }

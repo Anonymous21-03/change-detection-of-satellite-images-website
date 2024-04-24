@@ -1,3 +1,4 @@
+// Navbar.js
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
@@ -9,16 +10,19 @@ const Navbar = ({ isLoggedIn, username, handleLogout }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       const scrollY = window.scrollY;
       if (scrollY > 100) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
-    });
+    };
 
-    return () => window.removeEventListener('scroll', null);
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup function to remove the event listener
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
