@@ -1,47 +1,49 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import './styles/Register.css'
-import { Link } from 'react-router-dom'
-import ErrorMessage from './ErrorMessage'
+import React, { useState } from 'react';
+import axios from 'axios';
+import './styles/Register.css';
+import { Link, useNavigate } from 'react-router-dom';
+import ErrorMessage from './ErrorMessage';
 
 const Register = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [username, setUsername] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
-  const handleRegister = async e => {
-    e.preventDefault()
+  const handleRegister = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post('/api/register', {
         email,
         password,
         username,
         firstName,
-        lastName
-      })
-      console.log(response.data.message)
-      // Handle successful registration, if needed
+        lastName,
+      });
+      console.log(response.data.message);
+      // Navigate to the login page after successful registration
+      navigate('/login', { state: { username, password } });
     } catch (error) {
       if (error.response.data.error === 'Email already exists') {
-        setErrorMessage('Email already exists. Please use a different email.')
+        setErrorMessage('Email already exists. Please use a different email.');
       } else if (error.response.data.error === 'Username already exists') {
         setErrorMessage(
           'Username already exists. Please choose a different username.'
-        )
+        );
       } else {
         setErrorMessage(
           'An error occurred during registration. Please try again.'
-        )
+        );
       }
     }
-  }
+  };
 
   const handleCloseErrorMessage = () => {
-    setErrorMessage('')
-  }
+    setErrorMessage('');
+  };
 
   return (
     <div>

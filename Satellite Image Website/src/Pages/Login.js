@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './styles/Login.css';
 import ErrorMessage from './ErrorMessage';
 
@@ -7,7 +7,16 @@ const Login = ({ handleLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Use the state from the previous route (Register)
+  React.useEffect(() => {
+    if (location.state) {
+      setUsername(location.state.username);
+      setPassword(location.state.password);
+    }
+  }, [location.state]);
 
   const handleLoginSuccess = async (data) => {
     console.log('Login successful:', data);
@@ -35,7 +44,7 @@ const Login = ({ handleLogin }) => {
       }
     } catch (error) {
       console.error('An error occurred:', error);
-      setErrorMessage('Invalid Username/Password');
+      setErrorMessage('An error occurred. Please try again later.');
     }
   };
 
