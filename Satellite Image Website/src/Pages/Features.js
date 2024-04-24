@@ -99,7 +99,7 @@ const Features = () => {
           </p>
         </div>
         <div className='getStarted'>
-          <Link to='/change-detection'>
+          <Link to='/changedetection'>
             <button>Try Change Detection</button>
           </Link>
         </div>
@@ -115,7 +115,7 @@ const Features = () => {
           </p>
         </div>
         <div className='getStarted'>
-          <Link to='/vegetation-monitoring'>
+          <Link to='/vegetationmonitoring'>
             <button>Try Vegetation Monitoring</button>
           </Link>
         </div>
