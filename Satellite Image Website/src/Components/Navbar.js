@@ -1,9 +1,7 @@
-// Navbar.js
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { FaBeer, FaUpload, FaHome, FaQuestionCircle } from 'react-icons/fa';
-import { FaCodeCompare } from 'react-icons/fa6';
 import { AiOutlineUser, AiOutlineLogin } from 'react-icons/ai';
 
 const Navbar = ({ isLoggedIn, username, handleLogout }) => {
@@ -45,8 +43,20 @@ const Navbar = ({ isLoggedIn, username, handleLogout }) => {
         <Link to="/contact">
           <FaUpload /> Contact</Link>
         </li>
-        <li className="compare">
-          <FaCodeCompare /> Compare
+        <li className="features">
+          {/* Replace FaCodeCompare with desired icon */}
+          <FaBeer /> Features
+          <ul className="features-dropdown">
+            <li>
+              <Link to="/LandCoverClassificationPage">Land Cover Classification</Link>
+            </li>
+            <li>
+              <Link to="/LandCoverClassificationPage">Change Detection</Link>
+            </li>
+            <li>
+              <Link to="/LandCoverClassificationPage">Vegetation Monitoring</Link>
+            </li>
+          </ul>
         </li>
       </ul>
       <ul className="right-options">

@@ -61,7 +61,7 @@ const Login = ({ handleLogin }) => {
             <img src="/doodle.jpeg" alt="Login Illustration" />
           </div>
           <div className="login-content">
-            <h2>Welcome Back!</h2>
+            <h2>Welcome Back! Login to use the features</h2>
             <form onSubmit={handleLoginSubmit}>
               <div className="form-group">
                 <input

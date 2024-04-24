@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './Pages/Home';
@@ -25,11 +24,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar
-        isLoggedIn={isLoggedIn}
-        username={username}
-        handleLogout={handleLogout}
-      />
+      <Navbar isLoggedIn={isLoggedIn} username={username} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -46,6 +41,17 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login handleLogin={handleLogin} />} />
         <Route path="/contact" element={<Contact />} />
+        {/* Conditionally render the LandCoverClassificationPage route based on login status */}
+        <Route
+          path="/LandCoverClassificationPage"
+          element={
+            isLoggedIn ? (
+              <LandCoverClassificationPage />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
