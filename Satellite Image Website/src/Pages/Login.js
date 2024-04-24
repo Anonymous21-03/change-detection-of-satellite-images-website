@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './styles/Login.css';
+import ErrorMessage from './ErrorMessage';
 
 const Login = ({ handleLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleLoginSuccess = async (data) => {
     console.log('Login successful:', data);
@@ -29,11 +31,16 @@ const Login = ({ handleLogin }) => {
         handleLoginSuccess(data);
       } else {
         const error = await response.json();
-        console.error('Login failed:', error.message);
+        setErrorMessage(error.message);
       }
     } catch (error) {
       console.error('An error occurred:', error);
+      setErrorMessage('Invalid Username/Password');
     }
+  };
+
+  const handleCloseErrorMessage = () => {
+    setErrorMessage('');
   };
 
   return (
@@ -83,6 +90,10 @@ const Login = ({ handleLogin }) => {
                 <Link to="/register">Sign Up</Link>
               </div>
             </form>
+            <ErrorMessage
+              message={errorMessage}
+              onClose={handleCloseErrorMessage}
+            />
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './styles/Register.css';
 import { Link } from 'react-router-dom';
+import ErrorMessage from './ErrorMessage';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -9,11 +10,11 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      // Send a POST request to the server with the registration data
       const response = await axios.post('/api/register', {
         email,
         password,
@@ -21,10 +22,14 @@ const Register = () => {
         firstName,
         lastName,
       });
-      console.log(response.data.message); // Log the response message
+      console.log(response.data.message);
     } catch (error) {
-      console.error('Registration failed:', error.response.data.error);
+      setErrorMessage(error.response.data.error);
     }
+  };
+
+  const handleCloseErrorMessage = () => {
+    setErrorMessage('');
   };
 
   return (

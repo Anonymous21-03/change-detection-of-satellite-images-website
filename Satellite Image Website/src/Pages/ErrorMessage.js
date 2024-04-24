@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './styles/ErrorMessage.css';
 
-const ErrorMessage = ({ message, onClose }) => {
+const ErrorMessage = ({ message }) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -9,19 +9,16 @@ const ErrorMessage = ({ message, onClose }) => {
       setShow(true);
       const timer = setTimeout(() => {
         setShow(false);
-        onClose();
-      }, 3000); // Hide the error message after 3 seconds
+      }, 5000); // Hide the error message after 5 seconds
+
       return () => clearTimeout(timer);
     }
-  }, [message, onClose]);
+  }, [message]);
 
   return show ? (
     <div className="error-message-container">
       <div className="error-message-box">
-        <span>{message}</span>
-        <button className="close-button" onClick={onClose}>
-          &times;
-        </button>
+        <span className="error-message-text">{message}</span>
       </div>
     </div>
   ) : null;
