@@ -1,92 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import './styles/changeDetection.css';
+// ChangeDetection.js
+import React from 'react';
+import './changedetection.css';
 
 const ChangeDetection = () => {
-  // States for image, date, and region functionality
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [imageUrl1, setImageUrl1] = useState(null);
-  const [imageUrl2, setImageUrl2] = useState(null);
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [selectedRegion, setSelectedRegion] = useState('');
-  const [displayDates, setDisplayDates] = useState('No dates selected.');
-
-  // Function to display formatted dates
-  const displaySelectedDates = () => {
-    if (startDate && endDate) {
-      const formattedStartDate = new Date(startDate).toLocaleDateString();
-      const formattedEndDate = new Date(endDate).toLocaleDateString();
-      setDisplayDates(`Selected Dates: ${formattedStartDate} - ${formattedEndDate}`);
-    } else {
-      setDisplayDates('No dates selected.');
-    }
-  };
-
-  // Function to fetch image URLs based on dates and region (placeholder)
-  const fetchImageUrls = async () => {
-    if (startDate && endDate && selectedRegion) {
-      // Replace with the actual API call or functionality
-      console.log('Fetching image URLs based on dates and region (placeholder)');
-      setImageUrl1('https://via.placeholder.com/300x300');
-      setImageUrl2('https://via.placeholder.com/300x300');
-    } else {
-      setImageUrl1(null);
-      setImageUrl2(null);
-    }
-  };
-
-  // Use useEffect to call functions on relevant changes
-  useEffect(() => {
-    displaySelectedDates();
-    fetchImageUrls();
-  }, [startDate, endDate, selectedRegion, selectedFile]);
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
-  };
-
-  const handleStartDateChange = (event) => {
-    setStartDate(event.target.value);
-  };
-
-  const handleEndDateChange = (event) => {
-    setEndDate(event.target.value);
-  };
-
-  const handleRegionChange = (event) => {
-    setSelectedRegion(event.target.value);
-  };
-
   return (
-    <div className="body-container">
-      <div className="date-region-section">
-        <div className="date">
-          <label htmlFor="startDate">Start Date:</label>
-          <input type="date" id="startDate" value={startDate} onChange={handleStartDateChange} />
-        </div>
-        <div className="date">
-          <label htmlFor="endDate">End Date:</label>
-          <input type="date" id="endDate" value={endDate} onChange={handleEndDateChange} />
-        </div>
-        <div className="region">
-          <label htmlFor="region">Region:</label>
-          <select id="region" value={selectedRegion} onChange={handleRegionChange}>
-            <option value="">Select a region</option>
-            <option value="region1">Region 1</option>
-            <option value="region2">Region 2</option>
-            <option value="region3">Region 3</option>
-          </select>
-        </div>
+    <div className="change-detection-container">
+      <h2 className="change-detection"> Change Detection</h2>
+      <div className="description">
+        <p>
+        The landscape of the Earth is continuously changing. Change Detection methods in remote sensing and GIS are based on finding discrepencies in two satellite images over a period of time or after a particular event. Change detection algorithms for GIS compare the spatial representation of two points in time and measure differences in the variables of interest.
+        </p>
       </div>
-      <p className="display-dates">{displayDates}</p>
-      <div className="imageSec">
-        <div className="imageDisp">
-          {imageUrl1 && <div className="image-container"><img src={imageUrl1} alt="Fetched Image 1" /></div>}
-        </div>
-        <div className="imageDisp">
-          {imageUrl2 && <div className="image-container"><img src={imageUrl2} alt="Fetched Image 2" /></div>}
-        </div>
+      <div className="input-container">
+        <input type="text" placeholder="Place" />
+        <input type="date" placeholder="Date 1:" />
+        <input type="date" placeholder="Date 2: " />
+        <button>APPLY</button>
+      </div>
+      <div className="image-container">
+        <img src="https://miro.medium.com/v2/resize:fit:1200/1*RUp-cifSLIi13Qzk5l0OfA.png" alt="Satellite Image" className="satellite-image" />
+      </div>
+      <div className="changedetection-result">
+        <p>As can be seen, the area of Ludhiana has changed drastically over the course of 2 years. The white shaded areas show all the changes that were observed from the two satellite images.</p>
       </div>
     </div>
   );
