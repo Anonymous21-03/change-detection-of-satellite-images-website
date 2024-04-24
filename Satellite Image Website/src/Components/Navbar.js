@@ -38,7 +38,8 @@ const Navbar = ({ isLoggedIn, username, handleLogout }) => {
           </Link>
         </li>
         <li className="upload">
-          <FaUpload /> Upload
+        <Link to="/contact">
+          <FaUpload /> Contact</Link>
         </li>
         <li className="compare">
           <FaCodeCompare /> Compare
