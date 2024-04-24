@@ -43,7 +43,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login handleLogin={handleLogin} />} />
         <Route path="/contact" element={<Contact />} />
-        {/*<Route path="/landcover" element = {<LandCoverClassificationPage />} />*/}
+        <Route path="/landcover" element = {<LandCoverClassificationPage />} />
         <Route path="/changedetection" element = {<ChangeDetection />} />
         <Route path="/vegetationmonitoring" element = {<VegetationMonitoring />} />
         {/* Conditionally render the LandCoverClassificationPage route based on login status */}

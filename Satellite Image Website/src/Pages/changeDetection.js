@@ -1,27 +1,69 @@
 // ChangeDetection.js
-import React from 'react';
+import React, { useState } from 'react';
 import './changedetection.css';
 
 const ChangeDetection = () => {
+  const [selectedYear, setSelectedYear] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState('');
+  const [imageData, setImageData] = useState(null);
+
+  const years = [2015, 2017];
+  const regions = ['Bathinda', 'Faridkot', 'Ludhiana', 'Moga'];
+
+  const handleYearChange = (e) => {
+    setSelectedYear(e.target.value);
+  };
+
+  const handleRegionChange = (e) => {
+    setSelectedRegion(e.target.value);
+  };
+
+  const fetchImageData = () => {
+    // Make a fetch call to your server to retrieve the image data
+    fetch(`/api/images?year=${selectedYear}&region=${selectedRegion.toLowerCase()}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setImageData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching image data:', error);
+      });
+  };
+
   return (
     <div className="change-detection-container">
-      <h2 className="change-detection"> Change Detection</h2>
+      <h2 className="change-detection">Change Detection</h2>
       <div className="description">
-        <p>
-        The landscape of the Earth is continuously changing. Change Detection methods in remote sensing and GIS are based on finding discrepencies in two satellite images over a period of time or after a particular event. Change detection algorithms for GIS compare the spatial representation of two points in time and measure differences in the variables of interest.
-        </p>
+        {/* ... */}
       </div>
       <div className="input-container">
-        <input type="text" placeholder="Place" />
-        <input type="date" placeholder="Date 1:" />
-        <input type="date" placeholder="Date 2: " />
-        <button>APPLY</button>
+        <select value={selectedRegion} onChange={handleRegionChange}>
+          <option value="">Select Region</option>
+          {regions.map((region) => (
+            <option key={region} value={region}>
+              {region}
+            </option>
+          ))}
+        </select>
+        <select value={selectedYear} onChange={handleYearChange}>
+          <option value="">Select Year</option>
+          {years.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
+        </select>
+        <button onClick={fetchImageData}>APPLY</button>
       </div>
       <div className="image-container">
-        <img src="https://miro.medium.com/v2/resize:fit:1200/1*RUp-cifSLIi13Qzk5l0OfA.png" alt="Satellite Image" className="satellite-image" />
+        {imageData ? (
+          <img src={`data:image/jpeg;base64,${imageData.imageData}`} alt="Satellite Image" className="satellite-image" />
+        ) : (
+          <p>No image data available</p>
+        )}
       </div>
       <div className="changedetection-result">
-        <p>As can be seen, the area of Ludhiana has changed drastically over the course of 2 years. The white shaded areas show all the changes that were observed from the two satellite images.</p>
+        {/* ... */}
       </div>
     </div>
   );

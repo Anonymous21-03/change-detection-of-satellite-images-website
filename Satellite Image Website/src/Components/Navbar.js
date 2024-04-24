@@ -51,10 +51,10 @@ const Navbar = ({ isLoggedIn, username, handleLogout }) => {
               <Link to="/LandCoverClassificationPage">Land Cover Classification</Link>
             </li>
             <li>
-              <Link to="/LandCoverClassificationPage">Change Detection</Link>
+              <Link to="/ChangeDetection">Change Detection</Link>
             </li>
             <li>
-              <Link to="/LandCoverClassificationPage">Vegetation Monitoring</Link>
+              <Link to="/VegetationMonitoring">Vegetation Monitoring</Link>
             </li>
           </ul>
         </li>
