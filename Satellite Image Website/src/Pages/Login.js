@@ -58,7 +58,7 @@ const Login = ({ handleLogin }) => {
       <div className="login-page">
         <div className="login-container">
           <div className="illustration-container">
-            <img src="/doodle.jpeg" alt="Login Illustration" />
+            <img src="/login.jpeg" alt="Login Illustration" />
           </div>
           <div className="login-content">
             <h2>Welcome Back! Login to use the features</h2>

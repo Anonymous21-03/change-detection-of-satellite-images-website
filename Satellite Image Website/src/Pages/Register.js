@@ -51,7 +51,7 @@ const Register = () => {
       <div className='body-page'>
         <div className='body-container'>
           <div className='illustration-container'>
-            <img src='/doodle.jpeg' alt='Registration Illustration' />
+            <img src='/login.jpeg' alt='Registration Illustration' />
           </div>
           <div className='body-content'>
             <h2>Register</h2>
