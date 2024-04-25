@@ -4,7 +4,7 @@
 }
 
 .about_us_head {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url("../doodle.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url("../../Components/aboutus.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -44,7 +44,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("../doodle.jpeg");
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(6, 4, 14, 0.5)), url("../../Components/satimage.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -53,6 +53,8 @@
   position: relative;
   transition: background-size 1s ease-in-out;
   min-height: 200px;
+  font-family: serif;
+  font-style: Garamond;
 }
 
 .mainbod:hover {
@@ -134,7 +136,8 @@ p, .feature-name {
 }
 
 .feature-card {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("../doodle.jpeg");
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("../../Components/featurecard.jpeg");
+  font-style: Garamond;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
