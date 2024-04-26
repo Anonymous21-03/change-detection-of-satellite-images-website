@@ -30,7 +30,7 @@ function App() {
       <Navbar isLoggedIn={isLoggedIn} username={username} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Home />} />
-         <Route
+         {/* <Route
           path="/landcover"
           element={
             isLoggedIn ? (
@@ -39,7 +39,7 @@ function App() {
               <Navigate to="/login" replace />
             )
           }
-        />
+        /> */}
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login handleLogin={handleLogin} />} />
@@ -49,7 +49,7 @@ function App() {
         <Route path="/changedetection" element = {<ChangeDetection />} />
         <Route path="/vegetationmonitoring" element = {<VegetationMonitoring />} />
         {/* Conditionally render the LandCoverClassificationPage route based on login status */}
-        <Route
+        {/* <Route
           path="/LandCoverClassificationPage"
           element={
             isLoggedIn ? (
@@ -58,7 +58,7 @@ function App() {
               <Navigate to="/login" replace />
             )
           }
-        />
+        /> */}
       </Routes>
     </BrowserRouter>
   );

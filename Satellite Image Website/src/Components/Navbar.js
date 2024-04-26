@@ -48,7 +48,7 @@ const Navbar = ({ isLoggedIn, username, handleLogout }) => {
           <FaBeer /> Features
           <ul className="features-dropdown">
             <li>
-              <Link to="/LandCoverClassificationPage">Land Cover Classification</Link>
+              <Link to="/landcover">Land Cover Classification</Link>
             </li>
             <li>
               <Link to="/ChangeDetection">Change Detection</Link>
