@@ -8,9 +8,13 @@ const ChangeDetection = () => {
   const [selectedYearRight, setSelectedYearRight] = useState('');
   const [imageDataLeft, setImageDataLeft] = useState(null);
   const [imageDataRight, setImageDataRight] = useState(null);
+  const [imageDataChanged, setImageDataChanged] = useState(null);
+  const [imageExtensionLeft, setImageExtensionLeft] = useState(null);
+  const [imageExtensionRight, setImageExtensionRight] = useState(null);
+  const [imageExtensionChanged, setImageExtensionChanged] = useState(null);
 
   const years = [2015, 2017];
-  const regions = ['Bhatinda', 'Faridkot', 'Ludhiana', 'Moga'];
+  const regions = ['Dubai', 'ElephantButte', 'Ludhiana', 'Andasol'];
 
   const handleRegionChange = (e) => {
     setSelectedRegion(e.target.value);
@@ -26,10 +30,11 @@ const ChangeDetection = () => {
 
   const fetchImageData = () => {
     if (selectedRegion && selectedYearLeft) {
-      fetch(`/api/images?year=${selectedYearLeft}&region=${selectedRegion.toLowerCase()}`)
+      fetch(`/api/images?year=${selectedYearLeft}&region=${selectedRegion.toLowerCase().replace(/\s/g, '')}`)
         .then((response) => response.json())
         .then((data) => {
-          setImageDataLeft(data);
+          setImageDataLeft(data.imageData);
+          setImageExtensionLeft(data.extension);
         })
         .catch((error) => {
           console.error('Error fetching image data:', error);
@@ -37,10 +42,23 @@ const ChangeDetection = () => {
     }
 
     if (selectedRegion && selectedYearRight) {
-      fetch(`/api/images?year=${selectedYearRight}&region=${selectedRegion.toLowerCase()}`)
+      fetch(`/api/images?year=${selectedYearRight}&region=${selectedRegion.toLowerCase().replace(/\s/g, '')}`)
         .then((response) => response.json())
         .then((data) => {
-          setImageDataRight(data);
+          setImageDataRight(data.imageData);
+          setImageExtensionRight(data.extension);
+        })
+        .catch((error) => {
+          console.error('Error fetching image data:', error);
+        });
+    }
+
+    if (selectedRegion) {
+      fetch(`/api/images?region=${selectedRegion.toLowerCase().replace(/\s/g, '')}&state=changed`)
+        .then((response) => response.json())
+        .then((data) => {
+          setImageDataChanged(data.imageData);
+          setImageExtensionChanged(data.extension);
         })
         .catch((error) => {
           console.error('Error fetching image data:', error);
@@ -86,7 +104,7 @@ const ChangeDetection = () => {
         <div className="image-wrapper">
           {imageDataLeft ? (
             <img
-              src={`data:image/jpeg;base64,${imageDataLeft.imageData}`}
+              src={`data:image/${imageExtensionLeft};base64,${imageDataLeft}`}
               alt="Satellite Image"
               className="satellite-image"
             />
@@ -97,12 +115,25 @@ const ChangeDetection = () => {
         <div className="image-wrapper">
           {imageDataRight ? (
             <img
-              src={`data:image/jpeg;base64,${imageDataRight.imageData}`}
+              src={`data:image/${imageExtensionRight};base64,${imageDataRight}`}
               alt="Satellite Image"
               className="satellite-image"
             />
           ) : (
             <p>No image data available</p>
+          )}
+        </div>
+      </div>
+      <div className="changed-image-container">
+        <div className="image-wrapper">
+          {imageDataChanged ? (
+            <img
+              src={`data:image/${imageExtensionChanged};base64,${imageDataChanged}`}
+              alt="Changed Satellite Image"
+              className="satellite-image"
+            />
+          ) : (
+            <p>No changed image data available</p>
           )}
         </div>
       </div>

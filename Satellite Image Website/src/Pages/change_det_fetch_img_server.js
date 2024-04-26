@@ -1,4 +1,4 @@
-// fetch_img_server.js
+// change_det_fetch_img_server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -12,8 +12,10 @@ mongoose.connect('mongodb://localhost:27017/Satellite', {
 // Define the schema for the image metadata
 const imageSchema = new mongoose.Schema({
   year: Number,
-  region: { type: String, lowercase: true },
-  imageData: Buffer, // Store the image data as a Buffer
+  region: { type: String, lowercase: true }, // Convert region to lowercase
+  imageData: Buffer,
+  state: { type: String, default: 'original' }, // Set the default state to 'original'
+  extension: String, // Add a new field for image extension
 });
 
 // Create the model
@@ -21,15 +23,25 @@ const ImageModel = mongoose.model('change_detection_image', imageSchema);
 
 // API endpoint to fetch image data
 app.get('/api/images', async (req, res) => {
-  const { year, region } = req.query;
+  const { year, region, state } = req.query;
 
   try {
-    console.log(`Fetching image data for year ${year} and region ${region}`);
-    const imageData = await ImageModel.findOne({ year, region: region.toLowerCase() });
+    console.log(`Fetching image data for year ${year || 'N/A'}, region ${region}, and state ${state || 'original'}`);
+    const query = { region: region.replace(/\s/g, '').toLowerCase() }; // Remove spaces and convert region to lowercase
+    if (state) {
+      query.state = state;
+    } else {
+      query.state = 'original'; // Default to 'original' state if not provided
+    }
+    if (state !== 'changed' && year) {
+      query.year = parseInt(year);
+    }
+
+    const imageData = await ImageModel.findOne(query);
 
     if (imageData) {
       console.log('Image data found:', imageData);
-      res.json({ imageData: imageData.imageData.toString('base64') });
+      res.json({ imageData: imageData.imageData.toString('base64'), extension: imageData.extension }); // Send the extension along with the image data
     } else {
       console.log('Image data not found');
       res.status(404).json({ error: 'Image not found' });
