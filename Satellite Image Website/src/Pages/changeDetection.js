@@ -10,7 +10,7 @@ const ChangeDetection = () => {
   const [imageDataRight, setImageDataRight] = useState(null);
 
   const years = [2015, 2017];
-  const regions = ['Bathinda', 'Faridkot', 'Ludhiana', 'Moga'];
+  const regions = ['Bhatinda', 'Faridkot', 'Ludhiana', 'Moga'];
 
   const handleRegionChange = (e) => {
     setSelectedRegion(e.target.value);

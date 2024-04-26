@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost:27017/Satellite', {
     console.log('Connected to MongoDB');
 
     // Define the path to the folder containing the subfolders
-    const folderPath = 'C:\\Users\\rahul\\OneDrive\\Desktop\\Jaypee Assignments\\Sem 6\\Minor\\change detection\\Website\\Monitoring-of-satellite-images\\Satellite Image Website\\src\\Data';
+    const folderPath = 'C:\\Users\\rahul\\OneDrive\\Desktop\\Jaypee Assignments\\Sem 6\\Minor\\change detection\\Website\\Monitoring-of-satellite-images\\Satellite Image Website\\src\\Data\\Change detection';
 
     // Define the schema for the image metadata
     const imageSchema = new mongoose.Schema({
@@ -39,23 +39,34 @@ mongoose.connect('mongodb://localhost:27017/Satellite', {
               const yearPart = fileNameParts[fileNameParts.length - 1].split('.')[0];
               const year = isNaN(yearPart) ? 0 : parseInt(yearPart);
 
-              // Read the image file
-              const imageData = fs.readFileSync(filePath);
+              // Check if an image with the same year and region already exists
+              ImageModel.findOne({ year, region: name })
+                .then((existingImage) => {
+                  if (existingImage) {
+                    console.log(`Skipping ${file} as an image with the same year and region already exists in the database`);
+                  } else {
+                    // Read the image file
+                    const imageData = fs.readFileSync(filePath);
 
-              // Create a new document in change_detection_image
-              const imageMetadata = new ImageModel({
-                year: year,
-                region: name,
-                imageData: imageData, // Store the image data directly
-              });
+                    // Create a new document in change_detection_image
+                    const imageMetadata = new ImageModel({
+                      year: year,
+                      region: name,
+                      imageData: imageData, // Store the image data directly
+                    });
 
-              // Save the image metadata
-              imageMetadata.save()
-                .then(() => {
-                  console.log(`Image metadata for ${file} saved successfully`);
+                    // Save the image metadata
+                    imageMetadata.save()
+                      .then(() => {
+                        console.log(`Image metadata for ${file} saved successfully`);
+                      })
+                      .catch((err) => {
+                        console.error(`Error saving image metadata for ${file}: ${err}`);
+                      });
+                  }
                 })
                 .catch((err) => {
-                  console.error(`Error saving image metadata for ${file}: ${err}`);
+                  console.error(`Error checking for existing image ${file}: ${err}`);
                 });
             } else {
               console.warn(`Skipping file ${file} due to incorrect filename format`);
