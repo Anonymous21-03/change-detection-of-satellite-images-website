@@ -2,23 +2,25 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { FaBeer, FaUpload, FaHome, FaQuestionCircle } from 'react-icons/fa';
-import { FaCodeCompare } from 'react-icons/fa6';
 import { AiOutlineUser, AiOutlineLogin } from 'react-icons/ai';
 
 const Navbar = ({ isLoggedIn, username, handleLogout }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       const scrollY = window.scrollY;
       if (scrollY > 100) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
-    });
+    };
 
-    return () => window.removeEventListener('scroll', null);
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup function to remove the event listener
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -41,8 +43,20 @@ const Navbar = ({ isLoggedIn, username, handleLogout }) => {
         <Link to="/contact">
           <FaUpload /> Contact</Link>
         </li>
-        <li className="compare">
-          <FaCodeCompare /> Compare
+        <li className="features">
+          {/* Replace FaCodeCompare with desired icon */}
+          <FaBeer /> Features
+          <ul className="features-dropdown">
+            <li>
+              <Link to="/landcover">Land Cover Classification</Link>
+            </li>
+            <li>
+              <Link to="/ChangeDetection">Change Detection</Link>
+            </li>
+            <li>
+              <Link to="/VegetationMonitoring">Vegetation Monitoring</Link>
+            </li>
+          </ul>
         </li>
       </ul>
       <ul className="right-options">

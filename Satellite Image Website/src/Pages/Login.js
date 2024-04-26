@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './styles/Login.css';
+import ErrorMessage from './ErrorMessage';
 
 const Login = ({ handleLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [errorMessage, setErrorMessage] = useState('');
+
+  // Use the state from the previous route (Register)
+  React.useEffect(() => {
+    if (location.state) {
+      setUsername(location.state.username);
+      setPassword(location.state.password);
+    }
+  }, [location.state]);
 
   const handleLoginSuccess = async (data) => {
     console.log('Login successful:', data);
-    const user = { username: data.username }; // Assuming the server response includes the username property
-    handleLogin(user); // Call the handleLogin function from App.js
+    const user = { username: data.username };
+    handleLogin(user);
+    navigate('/');
   };
 
   const handleLoginSubmit = async (e) => {
@@ -23,17 +36,20 @@ const Login = ({ handleLogin }) => {
         body: JSON.stringify({ username, password }),
       });
       if (response.ok) {
-        // User is authenticated, handle the successful login
         const data = await response.json();
         handleLoginSuccess(data);
       } else {
-        // Handle the failed login
         const error = await response.json();
-        console.error('Login failed:', error.message);
+        setErrorMessage(error.message);
       }
     } catch (error) {
       console.error('An error occurred:', error);
+      setErrorMessage('An error occurred. Please try again later.');
     }
+  };
+
+  const handleCloseErrorMessage = () => {
+    setErrorMessage('');
   };
 
   return (
@@ -42,10 +58,10 @@ const Login = ({ handleLogin }) => {
       <div className="login-page">
         <div className="login-container">
           <div className="illustration-container">
-            <img src="/doodle.jpeg" alt="Login Illustration" />
+            <img src="/login.jpeg" alt="Login Illustration" />
           </div>
           <div className="login-content">
-            <h2>Welcome Back!</h2>
+            <h2>Welcome Back! Login to use the features</h2>
             <form onSubmit={handleLoginSubmit}>
               <div className="form-group">
                 <input
@@ -83,6 +99,10 @@ const Login = ({ handleLogin }) => {
                 <Link to="/register">Sign Up</Link>
               </div>
             </form>
+            <ErrorMessage
+              message={errorMessage}
+              onClose={handleCloseErrorMessage}
+            />
           </div>
         </div>
       </div>

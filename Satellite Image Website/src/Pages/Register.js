@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './styles/Register.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import ErrorMessage from './ErrorMessage';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -9,11 +10,12 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      // Send a POST request to the server with the registration data
       const response = await axios.post('/api/register', {
         email,
         password,
@@ -21,97 +23,114 @@ const Register = () => {
         firstName,
         lastName,
       });
-      console.log(response.data.message); // Log the response message
+      console.log(response.data.message);
+      // Navigate to the login page after successful registration
+      navigate('/login', { state: { username, password } });
     } catch (error) {
-      console.error('Registration failed:', error.response.data.error);
+      if (error.response.data.error === 'Email already exists') {
+        setErrorMessage('Email already exists. Please use a different email.');
+      } else if (error.response.data.error === 'Username already exists') {
+        setErrorMessage(
+          'Username already exists. Please choose a different username.'
+        );
+      } else {
+        setErrorMessage(
+          'An error occurred during registration. Please try again.'
+        );
+      }
     }
+  };
+
+  const handleCloseErrorMessage = () => {
+    setErrorMessage('');
   };
 
   return (
     <div>
-      <div className="background-container"></div>
-      <div className="body-page">
-        <div className="body-container">
-          <div className="illustration-container">
-            <img src="/doodle.jpeg" alt="Registration Illustration" />
+      <div className='background-container'></div>
+      <div className='body-page'>
+        <div className='body-container'>
+          <div className='illustration-container'>
+            <img src='/login.jpeg' alt='Registration Illustration' />
           </div>
-          <div className="body-content">
+          <div className='body-content'>
             <h2>Register</h2>
             <form onSubmit={handleRegister}>
-              <div className="form-row">
-                <div className="form-group">
+              <div className='form-row'>
+                <div className='form-group'>
                   <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    placeholder="First Name"
+                    type='text'
+                    id='firstName'
+                    name='firstName'
+                    placeholder='First Name'
                     value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    onChange={e => setFirstName(e.target.value)}
                     required
-                    className="single-line-input"
+                    className='single-line-input'
                   />
                 </div>
-                <div className="form-group">
+                <div className='form-group'>
                   <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    placeholder="Last Name"
+                    type='text'
+                    id='lastName'
+                    name='lastName'
+                    placeholder='Last Name'
                     value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    onChange={e => setLastName(e.target.value)}
                     required
-                    className="single-line-input"
+                    className='single-line-input'
                   />
                 </div>
               </div>
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Email"
+                  type='email'
+                  id='email'
+                  name='email'
+                  placeholder='Email'
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={e => setEmail(e.target.value)}
                   required
-                  className="single-line-input"
+                  className='single-line-input'
                 />
               </div>
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Password"
+                  type='password'
+                  id='password'
+                  name='password'
+                  placeholder='Password'
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={e => setPassword(e.target.value)}
                   required
-                  className="single-line-input"
+                  className='single-line-input'
                 />
               </div>
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="text"
-                  id="username"
-                  name="username"
-                  placeholder="Username"
+                  type='text'
+                  id='username'
+                  name='username'
+                  placeholder='Username'
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={e => setUsername(e.target.value)}
                   required
-                  className="single-line-input"
+                  className='single-line-input'
                 />
               </div>
-              <div className="form-group">
-                <button type="submit" className="body-button">
+              <div className='form-group'>
+                <button type='submit' className='body-button'>
                   Register
                 </button>
                 <Link to='/Login'>Sign In</Link>
               </div>
             </form>
+            <ErrorMessage message={errorMessage} />
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register
