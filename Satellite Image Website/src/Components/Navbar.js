@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { FaBeer, FaUpload, FaHome, FaQuestionCircle } from 'react-icons/fa';
@@ -6,6 +6,7 @@ import { AiOutlineUser, AiOutlineLogin } from 'react-icons/ai';
 
 const Navbar = ({ isLoggedIn, username, handleLogout }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const dropdownMenuRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,11 +18,28 @@ const Navbar = ({ isLoggedIn, username, handleLogout }) => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    const handleClickOutside = (event) => {
+      if (dropdownMenuRef.current && !dropdownMenuRef.current.contains(event.target)) {
+        dropdownMenuRef.current.classList.remove('show');
+      }
+    };
 
-    // Cleanup function to remove the event listener
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('click', handleClickOutside);
+
+    // Cleanup function to remove the event listeners
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('click', handleClickOutside);
+    };
   }, []);
+
+  const toggleDropdownMenu = () => {
+    const dropdownMenu = dropdownMenuRef.current;
+    if (dropdownMenu) {
+      dropdownMenu.classList.toggle('show');
+    }
+  };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
@@ -40,8 +58,9 @@ const Navbar = ({ isLoggedIn, username, handleLogout }) => {
           </Link>
         </li>
         <li className="upload">
-        <Link to="/contact">
-          <FaUpload /> Contact</Link>
+          <Link to="/contact">
+            <FaUpload /> Contact
+          </Link>
         </li>
         <li className="features">
           {/* Replace FaCodeCompare with desired icon */}
@@ -61,12 +80,12 @@ const Navbar = ({ isLoggedIn, username, handleLogout }) => {
       </ul>
       <ul className="right-options">
         {isLoggedIn ? (
-          <li className="user-info">
+          <li className="user-info" onClick={toggleDropdownMenu}>
             <div className="username">
               {username}
               <span className="arrow-down"></span>
             </div>
-            <div className="dropdown-menu">
+            <div className="dropdown-menu" ref={dropdownMenuRef}>
               <Link to="/profile">Profile</Link>
               <Link to="/settings">Settings</Link>
               <Link to="/" onClick={handleLogout}>
