@@ -1,0 +1,136 @@
+[{
+  "_id": {
+    "$oid": "66296208a1de06f689caf27b"
+  },
+  "length": 167607,
+  "chunkSize": 261120,
+  "uploadDate": {
+    "$date": "2024-04-24T19:48:24.814Z"
+  },
+  "filename": "8e99d8e8d794356f53b8738c51a6942e.jpg",
+  "contentType": "image/jpeg",
+  "metadata": {
+    "year": 2015,
+    "region": "moga",
+    "filename": "moga_2015.jpeg"
+  }
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf27a"
+  },
+  "length": 222663,
+  "chunkSize": 261120,
+  "uploadDate": {
+    "$date": "2024-04-24T19:48:24.818Z"
+  },
+  "filename": "1ee13d992bd911e95e3e25a827935530.jpg",
+  "contentType": "image/jpeg",
+  "metadata": {
+    "year": 2015,
+    "region": "ludhiana",
+    "filename": "ludhiana_2015.jpeg"
+  }
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf27c"
+  },
+  "length": 124718,
+  "chunkSize": 261120,
+  "uploadDate": {
+    "$date": "2024-04-24T19:48:24.819Z"
+  },
+  "filename": "163583f91a69ed7a632bf4d1e81ba8ae.jpg",
+  "contentType": "image/jpeg",
+  "metadata": {
+    "year": 2017,
+    "region": "bhatinda",
+    "filename": "bhatinda_2017.jpeg"
+  }
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf27f"
+  },
+  "length": 204473,
+  "chunkSize": 261120,
+  "uploadDate": {
+    "$date": "2024-04-24T19:48:24.821Z"
+  },
+  "filename": "26afdc35c6d249365a5f9d4f6795ce0b.jpg",
+  "contentType": "image/jpeg",
+  "metadata": {
+    "year": 2017,
+    "region": "moga",
+    "filename": "moga_2017.jpeg"
+  }
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf288"
+  },
+  "length": 135629,
+  "chunkSize": 261120,
+  "uploadDate": {
+    "$date": "2024-04-24T19:48:24.823Z"
+  },
+  "filename": "9bd56eb2088f3d3d08dbaa588371d2be.jpg",
+  "contentType": "image/jpeg",
+  "metadata": {
+    "year": 2015,
+    "region": "faridkot",
+    "filename": "faridkot_2015.jpeg"
+  }
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf27d"
+  },
+  "length": 137832,
+  "chunkSize": 261120,
+  "uploadDate": {
+    "$date": "2024-04-24T19:48:24.854Z"
+  },
+  "filename": "f6f07293adf71049a7a590312ea7cce8.jpg",
+  "contentType": "image/jpeg",
+  "metadata": {
+    "year": 2017,
+    "region": "faridkot",
+    "filename": "faridkot_2017.jpeg"
+  }
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf280"
+  },
+  "length": 129102,
+  "chunkSize": 261120,
+  "uploadDate": {
+    "$date": "2024-04-24T19:48:24.860Z"
+  },
+  "filename": "11908225355e6d200f714ccafb6e27e9.jpg",
+  "contentType": "image/jpeg",
+  "metadata": {
+    "year": 2015,
+    "region": "bhatinda",
+    "filename": "bhatinda_2015.jpeg"
+  }
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf27e"
+  },
+  "length": 252880,
+  "chunkSize": 261120,
+  "uploadDate": {
+    "$date": "2024-04-24T19:48:24.821Z"
+  },
+  "filename": "b777dc00b0891f8fc72c96426649073c.jpg",
+  "contentType": "image/jpeg",
+  "metadata": {
+    "year": 2017,
+    "region": "ludhiana",
+    "filename": "ludhiana_2017.jpeg"
+  }
+}]

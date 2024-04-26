@@ -1,0 +1,80 @@
+[{
+  "_id": {
+    "$oid": "66296208a1de06f689caf28a"
+  },
+  "year": 2015,
+  "region": "moga",
+  "filename": "moga_2015.jpeg",
+  "contentType": "image/jpeg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf28c"
+  },
+  "year": 2015,
+  "region": "ludhiana",
+  "filename": "ludhiana_2015.jpeg",
+  "contentType": "image/jpeg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf28e"
+  },
+  "year": 2015,
+  "region": "faridkot",
+  "filename": "faridkot_2015.jpeg",
+  "contentType": "image/jpeg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf290"
+  },
+  "year": 2017,
+  "region": "bhatinda",
+  "filename": "bhatinda_2017.jpeg",
+  "contentType": "image/jpeg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf292"
+  },
+  "year": 2017,
+  "region": "moga",
+  "filename": "moga_2017.jpeg",
+  "contentType": "image/jpeg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf294"
+  },
+  "year": 2017,
+  "region": "faridkot",
+  "filename": "faridkot_2017.jpeg",
+  "contentType": "image/jpeg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf296"
+  },
+  "year": 2015,
+  "region": "bhatinda",
+  "filename": "bhatinda_2015.jpeg",
+  "contentType": "image/jpeg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66296208a1de06f689caf298"
+  },
+  "year": 2017,
+  "region": "ludhiana",
+  "filename": "ludhiana_2017.jpeg",
+  "contentType": "image/jpeg",
+  "__v": 0
+}]
