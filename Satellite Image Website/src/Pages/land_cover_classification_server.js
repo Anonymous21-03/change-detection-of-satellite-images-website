@@ -1,87 +1,48 @@
-import React, { useState } from 'react';
-import './landcover.css';
+const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
 
-const LandCoverClassificationPage = () => {
-  const [selectedRegion, setSelectedRegion] = useState('');
-  const [selectedYear, setSelectedYear] = useState('');
-  const [imageData, setImageData] = useState(null);
-  const [imageExtension, setImageExtension] = useState(null);
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/Satellite', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-  const regions = ['Bhatinda', 'Faridkot', 'Moga', 'Ludhiana'];
-  const years = [2015, 2017, 2019, 2021];
+// Define the schema for the image metadata
+const imageSchema = new mongoose.Schema({
+  region: { type: String, lowercase: true }, // Convert region to lowercase
+  year: Number,
+  imageData: Buffer,
+  extension: String, // Add a new field for image extension
+});
 
-  const handleRegionChange = (e) => {
-    setSelectedRegion(e.target.value);
-  };
+// Create the model
+const ImageModel = mongoose.model('land_cover_classification', imageSchema);
 
-  const handleYearChange = (e) => {
-    setSelectedYear(e.target.value);
-  };
+// API endpoint to fetch image data
+app.get('/api/images', async (req, res) => {
+  const { region, year } = req.query;
 
-  const fetchImageData = () => {
-    if (selectedRegion && selectedYear) {
-      fetch(`/api/images?region=${selectedRegion.toLowerCase().replace(/\s/g, '')}&year=${selectedYear}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setImageData(data.imageData);
-          setImageExtension(data.extension);
-        })
-        .catch((error) => {
-          console.error('Error fetching image data:', error);
-        });
+  try {
+    console.log(`Fetching image data for region ${region} and year ${year}`);
+    const query = { region: region.replace(/\s/g, '').toLowerCase(), year: parseInt(year) }; // Remove spaces and convert region to lowercase
+
+    const imageData = await ImageModel.findOne(query);
+
+    if (imageData) {
+      console.log('Image data found:', imageData);
+      res.json({ imageData: imageData.imageData.toString('base64'), extension: imageData.extension }); // Send the extension along with the image data
+    } else {
+      console.log('Image data not found');
+      res.status(404).json({ error: 'Image not found' });
     }
-  };
+  } catch (error) {
+    console.error('Error fetching image data:', error);
+    res.status(500).json({ error: 'Error fetching image data' });
+  }
+});
 
-  return (
-    <div className="land-cover-container">
-      <h2 className="land-cover"> Land Cover Classification</h2>
-      <div className="description">
-        <p>
-          The surface of the Earth is divided into various aspects and assemblies of land. The classification of this land into various classes is called land cover classification. The classes may include water, snow, grassland, forest, roads etc. Land Cover Classification is one of the most crucial steps for the processing of satellite data.
-        </p>
-      </div>
-      <div className="input-container">
-        <select value={selectedRegion} onChange={handleRegionChange}>
-          <option value="">Select Region</option>
-          {regions.map((region) => (
-            <option key={region} value={region}>
-              {region}
-            </option>
-          ))}
-        </select>
-        <select value={selectedYear} onChange={handleYearChange}>
-          <option value="">Select Year</option>
-          {years.map((year) => (
-            <option key={year} value={year}>
-              {year}
-            </option>
-          ))}
-        </select>
-        <button onClick={fetchImageData}>APPLY</button>
-      </div>
-      <div className="image-container">
-        {imageData ? (
-          <img
-            src={`data:image/${imageExtension};base64,${imageData}`}
-            alt="Satellite Image"
-            className="satellite-image"
-          />
-        ) : (
-          <p>No image data available</p>
-        )}
-      </div>
-      <div className="classification-result">
-        <p>The area has displayed the following classes:</p>
-        <ul>
-          <li>1. Houses - 20%</li>
-          <li>2. Roads - 15%</li>
-          <li>3. Dense buildings - 60%</li>
-          <li>4. Urban Colony - 5%</li>
-        </ul>
-        <p>It can be deduced from the image that the area of Ludhiana, Punjab, shows the above classes and hence can be classified as a developing city.</p>
-      </div>
-    </div>
-  );
-};
-
-export default LandCoverClassificationPage;
+// Start the server
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
