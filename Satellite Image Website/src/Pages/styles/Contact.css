@@ -167,15 +167,14 @@
 }
 
 .hero {
-  min-height: 60vh; /* Changed from 800px */
-  height: 60vh; /* Changed from 800px */
+  min-height: 60vh;
+  height: 60vh;
   width: 100%;
-  background-color: black;
-  /* Removed border-bottom-right-radius: 15vw; */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); /* Added dark gradient */
   position: relative;
-  display: flex; /* Added */
-  justify-content: center; /* Added */
-  align-items: center; /* Added */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero:before {
@@ -204,7 +203,6 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-bottom-right-radius: 15vw;
   pointer-events: none;
 }
 
@@ -217,6 +215,7 @@
   background-size: cover;
   object-fit: cover;
   transform: rotate(180deg);
+  opacity: 0.5; /* Added transparency */
 }
 
 .gradient-overlay {
@@ -235,11 +234,13 @@
   font-size: 8vw;
   line-height: 1em;
   font-weight: 900;
+  color: #fff; /* Changed text color to white for better visibility */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Added text shadow for better visibility */
 }
 
 .blend {
   mix-blend-mode: difference !important;
-  color: white;
+  color: white; /* Changed text color to white for better visibility */
   position: relative;
   z-index: 2;
 }
