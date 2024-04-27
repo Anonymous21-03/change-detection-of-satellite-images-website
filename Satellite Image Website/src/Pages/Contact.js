@@ -41,13 +41,29 @@ const MapContainer = () => {
 const Contact = () => {
   return (
     <>
-      <div className='contact-container'>
+    <section className="hero d-flex align-items-center justify-content-center">
+  <div className="video-wrap">
+    <video autoPlay playsInline loop muted id="video-bg">
+      <source src="https://tactusmarketing.com/wp-content/uploads/tactus-waves-hero.mp4" type="video/mp4" />
+      <source src="https://tactusmarketing.com/wp-content/uploads/tactus-waves-hero.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div className="position-absolute w-100 gradient-overlay"></div>
+  <div className="hero-content">
+    <h1 className="hero-title blend">
+      Contact Us
+      <br />
+      
+    </h1>
+  </div>
+</section>
+      {/* <div className='contact-container'>
         <div className='pattern-overlay'>
           <h1 className='contact-heading'>
             <span>Contact Us</span>
           </h1>
         </div>
-      </div>
+      </div> */}
       <div className='contact-section'>
         <div className='left-section'>
           <div className='book'>

@@ -165,3 +165,81 @@
 .get-directions-btn:hover {
   background-color: #0056b3;
 }
+
+.hero {
+  min-height: 60vh; /* Changed from 800px */
+  height: 60vh; /* Changed from 800px */
+  width: 100%;
+  background-color: black;
+  /* Removed border-bottom-right-radius: 15vw; */
+  position: relative;
+  display: flex; /* Added */
+  justify-content: center; /* Added */
+  align-items: center; /* Added */
+}
+
+.hero:before {
+  content: "";
+  background-color: black;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 15vw;
+  height: 15vw;
+}
+
+.hero:after {
+  content: "";
+  background-color: white;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 15vw;
+  height: 15vw;
+  border-top-left-radius: 15vw;
+}
+
+.video-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-bottom-right-radius: 15vw;
+  pointer-events: none;
+}
+
+#video-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  background-position: center center;
+  background-size: cover;
+  object-fit: cover;
+  transform: rotate(180deg);
+}
+
+.gradient-overlay {
+  bottom: 0;
+  height: 50%;
+  background: -moz-linear-gradient(top, rgba(33,33,33,0) 0%, rgba(33,33,33,1) 50%);
+  background: -webkit-linear-gradient(top, rgba(33,33,33,0) 0%,rgba(33,33,33,1) 50%);
+  background: linear-gradient(to bottom, rgba(33,33,33,0) 0%,rgba(33,33,33,1) 50%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00212121', endColorstr='#212121',GradientType=0 );
+  z-index: 1;
+  border-bottom-right-radius: 15vw;
+  pointer-events: none;
+}
+
+.hero-title {
+  font-size: 8vw;
+  line-height: 1em;
+  font-weight: 900;
+}
+
+.blend {
+  mix-blend-mode: difference !important;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
