@@ -7,6 +7,7 @@ import Register from './Pages/Register';
 import Login from './Pages/Login';
 import Contact from './Pages/Contact';
 import PrivacyPolicy from './Pages/PrivacyPolicy';
+import TermsAndConditions from './Pages/TermsAndConditions';
 import LandCoverClassificationPage from './Pages/LandCoverClassificationPage';
 import ChangeDetection from './Pages/ChangeDetection';
 import VegetationMonitoring from './Pages/VegetationMonitoring';
@@ -45,6 +46,7 @@ function App() {
         <Route path="/login" element={<Login handleLogin={handleLogin} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
         <Route path="/landcover" element = {<LandCoverClassificationPage />} />
         <Route path="/changedetection" element = {<ChangeDetection />} />
         <Route path="/vegetationmonitoring" element = {<VegetationMonitoring />} />

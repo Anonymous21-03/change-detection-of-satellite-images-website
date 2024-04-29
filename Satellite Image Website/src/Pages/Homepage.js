@@ -23,7 +23,10 @@
               other relevant parameters.
             </p>
             <div className='getStarted'>
-              <button onClick={scrollToFeatures}>Get Started</button>
+              <button className='custom-button' onClick={scrollToFeatures}>Get Started
+                <span class = "button-text"></span>
+                <span class="hover-text" aria-hidden="true">Get Started</span>
+              </button>
             </div>
           </div>
         </div>
