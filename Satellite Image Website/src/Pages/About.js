@@ -90,7 +90,8 @@ const Body = () => {
           <Link to='/contact'>Contact</Link>
           {/* <a href="#">Privacy Policy</a> */}
           <Link to='/privacy'>Privacy Policy</Link>
-          <a href="#">Terms of Service</a>
+          {/* <a href="#">Terms of Service</a> */}
+          <Link to='/terms'>Terms and Conditions</Link>
         </div>
         <div className="copyright">
           &copy; {new Date().getFullYear()} ISMEA. All rights reserved.
