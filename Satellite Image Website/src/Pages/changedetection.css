@@ -127,10 +127,10 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 25rem;
-  width: 100rem;
+  width: 100%; /* Allow the container to grow horizontally */
+  max-height: none; /* Remove the maximum height */
+  overflow: auto; /* Add scrollbars if the content exceeds the container */
 }
-
 .image-box-cd {
   width: 48%;
   border: 2px solid white;
@@ -140,13 +140,16 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 25rem;
+  height: 400px; /* Set a fixed height for the container */
+  max-width: 800px; /* Add a max-width to prevent the container from becoming too wide */
+  margin: 0 auto; /* Center the container horizontally */
 }
+
 
 .satellite-image-cd {
   max-width: 100%;
-  height: auto;
-  display: block; /* Make the image a block-level element */
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .apply-button-cd {

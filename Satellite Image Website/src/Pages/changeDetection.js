@@ -13,7 +13,7 @@ const ChangeDetection = () => {
   const [imageExtensionRight, setImageExtensionRight] = useState(null)
   const [imageExtensionChanged, setImageExtensionChanged] = useState(null)
 
-  const years = [2015, 2017]
+  const years = [1987, 1991, 2011, 2012, 2015, 2017]
   const regions = ['Dubai', 'ElephantButte', 'Ludhiana', 'Andasol']
 
   const handleRegionChange = e => {
