@@ -7,6 +7,8 @@
 
 /* Container styles */
 .land-cover-container {
+  background-image: url('../Components/satbg.jpg');
+  background-size: cover;
   min-height: 100vh; /* Set the minimum height to 100% of the viewport height */
   display: flex;
   flex-direction: column;
@@ -96,7 +98,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center; /* Center the image vertically */
-  height: 35rem;
+  height: 25rem;
   width: 100rem;
 }
 

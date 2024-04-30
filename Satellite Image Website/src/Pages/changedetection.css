@@ -1,5 +1,8 @@
 /* changedetection.css */
 .change-detection-container {
+  background-image: url('../Components/satbg.jpg');
+  background-size: cover;
+  background-position: center;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,10 +26,11 @@ h2 {
 .change-detection-heading {
   font-size: 36px;
   margin-bottom: 10px;
+  margin-top: 90px;
   text-align: center;
 }
 
-.change-detection-description {
+.description {
   background-color: #1d1d1d;
   border-radius: 8px;
   padding: 20px;
@@ -70,8 +74,8 @@ h2 {
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
+  border-radius: 6px;
+  padding: 8px 20px;
   cursor: pointer;
   font-size: 16px; /* Increase font size */
   transition: background-color 0.3s ease; /* Add transition for hover effect */
@@ -127,10 +131,10 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; /* Allow the container to grow horizontally */
-  max-height: none; /* Remove the maximum height */
-  overflow: auto; /* Add scrollbars if the content exceeds the container */
+  height: 25rem;
+  width: 100rem;
 }
+
 .image-box-cd {
   width: 48%;
   border: 2px solid white;
@@ -140,16 +144,13 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 400px; /* Set a fixed height for the container */
-  max-width: 800px; /* Add a max-width to prevent the container from becoming too wide */
-  margin: 0 auto; /* Center the container horizontally */
+  height: 25rem;
 }
-
 
 .satellite-image-cd {
   max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  height: auto;
+  display: block; /* Make the image a block-level element */
 }
 
 .apply-button-cd {

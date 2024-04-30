@@ -1,4 +1,3 @@
-
 // LandCoverClassificationPage.js
 import React, { useState } from 'react';
 import './landcover.css';

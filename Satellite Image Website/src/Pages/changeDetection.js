@@ -81,7 +81,7 @@ const ChangeDetection = () => {
   return (
     <div className="change-detection-container">
       <h2 className="change-detection-heading">Change Detection</h2>
-      <p className="change-detection-description">
+      <p className="description">
         Change detection is the process of identifying differences in the state of an object or phenomenon by observing it at different times. It is a valuable technique in remote sensing and satellite imagery analysis, allowing for the identification and monitoring of changes in land cover, urban development, environmental conditions, and other phenomena over time.
       </p>
       <div className="input-container-cd">
@@ -158,3 +158,4 @@ const ChangeDetection = () => {
 
 
 export default ChangeDetection
+
