@@ -87,7 +87,6 @@ const Body = () => {
         <div className="footer-links">
           <Link to='/'>Home</Link>
           <a href="#">About</a>
-          <a href="#">Services</a>
           <Link to='/contact'>Contact</Link>
           {/* <a href="#">Privacy Policy</a> */}
           <Link to='/privacy'>Privacy Policy</Link>

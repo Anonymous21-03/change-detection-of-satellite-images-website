@@ -123,3 +123,8 @@ h2 {
   text-decoration: underline;
   color: #e6e6e6;
 }
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
