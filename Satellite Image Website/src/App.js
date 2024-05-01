@@ -50,6 +50,7 @@ function App() {
         <Route path="/landcover" element = {<LandCoverClassificationPage />} />
         <Route path="/changedetection" element = {<ChangeDetection />} />
         <Route path="/vegetationmonitoring" element = {<VegetationMonitoring />} />
+        <Route path="/profile" element = {<UserProfile />} />
         {/* Conditionally render the LandCoverClassificationPage route based on login status */}
         {/* <Route
           path="/LandCoverClassificationPage"
