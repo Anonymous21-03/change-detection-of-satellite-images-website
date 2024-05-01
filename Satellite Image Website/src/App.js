@@ -11,6 +11,8 @@ import TermsAndConditions from './Pages/TermsAndConditions';
 import LandCoverClassificationPage from './Pages/LandCoverClassificationPage';
 import ChangeDetection from './Pages/ChangeDetection';
 import VegetationMonitoring from './Pages/VegetationMonitoring';
+import UserProfile from './Pages/UserProfile';
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
