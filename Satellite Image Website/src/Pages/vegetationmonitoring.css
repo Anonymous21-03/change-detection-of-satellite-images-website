@@ -131,14 +131,20 @@
   }
 
   .image-container-vd {
-      width: 48%;
-      border: 2px solid white;
-      padding: 10px;
-      background-color: rgb(0,0,139,0.35);
-      border-radius: 8px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 25rem;
-      margin-bottom: 30px;
+    width: 48%;
+    border: 2px solid white;
+    padding: 10px;
+    background-color: rgb(0, 0, 139, 0.35);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25rem;
+    margin-bottom: 30px;
+  }
+  
+  .satellite-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* This ensures the image stays within the container */
   }
