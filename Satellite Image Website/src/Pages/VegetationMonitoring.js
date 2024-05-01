@@ -35,7 +35,7 @@ const VegetationMonitoring = () => {
           Remote sensing technique provides a powerful systematic tool to monitor, map and model the different vegetation cover and provides a precise and accurate road map for many aspects. Band ratioing extracts vegetation from heterogeneous surface features and reduces the spectral biasness also.ding discrepencies in two satellite images over a period of time or after a particular event. Change detection algorithms for GIS compare the spatial representation of two points in time and measure differences in the variables of interest.
         </p>
       </div>
-      <div className="input-container">
+      <div className="input-container-vd">
         <select value={selectedRegion} onChange={handleRegionChange}>
           <option value="">Select Region</option>
           {regions.map((region) => (
@@ -44,9 +44,9 @@ const VegetationMonitoring = () => {
             </option>
           ))}
         </select>
-        <button onClick={fetchImageData}>APPLY</button>
+        <button className="apply-button-vd" onClick={fetchImageData}>APPLY</button>
       </div>
-      <div className="image-container">
+      <div className="image-container-vd">
         {imageData ? (
           <img
             src={`data:image/${imageExtension};base64,${imageData}`}
@@ -58,7 +58,7 @@ const VegetationMonitoring = () => {
         )}
       </div>
       <div className="vegetationmonitoring-result">
-        <p>The NDVI of the region ranges from -0.087 to 0.4652 with an average value of 0.27625. A healthy vegetation NDVI ranges from 0 to 0.8. Hence, the region has a relatively healthy vegetation cover.</p>
+        <p>NDVI rating is a strong tool to monitor the overall health of a particular area. A healthy vegetation NDVI ranges from 0 to 0.8.</p>
       </div>
     </div>
   );

@@ -15,6 +15,16 @@ const Register = () => {
 
   const handleRegister = async e => {
     e.preventDefault()
+    // Validate username and password
+    if (username.length < 4 || username.length > 20) {
+      setErrorMessage('Username must be between 4 and 20 characters long.')
+      return
+    }
+    if (password.length < 8 || password.length > 20) {
+      setErrorMessage('Password must be between 8 and 20 characters long.')
+      return
+    }
+
     try {
       const response = await axios.post('/api/register', {
         email,

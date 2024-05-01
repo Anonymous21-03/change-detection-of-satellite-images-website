@@ -1,3 +1,4 @@
+// LandCoverClassificationPage.js
 import React, { useState } from 'react';
 import './landcover.css';
 
@@ -40,7 +41,7 @@ const LandCoverClassificationPage = () => {
           The surface of the Earth is divided into various aspects and assemblies of land. The classification of this land into various classes is called land cover classification. The classes may include water, snow, grassland, forest, roads etc. Land Cover Classification is one of the most crucial steps for the processing of satellite data.
         </p>
       </div>
-      <div className="input-container">
+      <div className="input-container-lc">
         <select value={selectedRegion} onChange={handleRegionChange}>
           <option value="">Select Region</option>
           {regions.map((region) => (
@@ -59,7 +60,7 @@ const LandCoverClassificationPage = () => {
         </select>
         <button onClick={fetchImageData}>APPLY</button>
       </div>
-      <div className="image-container">
+      <div className="image-container-lc">
         {imageData ? (
           <img
             src={`data:image/${imageExtension};base64,${imageData}`}
@@ -70,7 +71,7 @@ const LandCoverClassificationPage = () => {
           <p>No image data available</p>
         )}
       </div>
-      <div className="classification-result">
+      {/* <div className="classification-result">
         <p>The area has displayed the following classes:</p>
         <ul>
           <li>1. Houses - 20%</li>
@@ -79,7 +80,7 @@ const LandCoverClassificationPage = () => {
           <li>4. Urban Colony - 5%</li>
         </ul>
         <p>It can be deduced from the image that the area of Ludhiana, Punjab, shows the above classes and hence can be classified as a developing city.</p>
-      </div>
+      </div> */}
     </div>
   );
 };

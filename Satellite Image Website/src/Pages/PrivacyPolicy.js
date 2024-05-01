@@ -6,6 +6,10 @@ const PrivacyPolicy = () => {
     <div className='privacy-policy'>
       <h1>PRIVACY POLICY</h1>
       <div className='policy-section'>
+        <h2>What the Privacy Policy Covers</h2>
+        <p>
+          This privacy policy outlines how we collect, use, and protect your personal information when you use our website and services. It covers topics such as the types of data we gather, data security measures, third-party integrations, and your rights regarding your personal data.
+        </p>
         <h2>Information Collection and Use</h2>
         <p>
           We collect personal information such as your name, email address, and

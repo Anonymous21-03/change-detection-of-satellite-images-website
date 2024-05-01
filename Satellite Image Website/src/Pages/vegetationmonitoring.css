@@ -30,6 +30,7 @@
     font-size: 36px;
     margin-bottom: 20px;
     text-align: center;
+    margin-top: 20px;
   }
   
   /* Description styles */
@@ -43,14 +44,14 @@
   }
   
   /* Input fields styles */
-  .input-container {
+  .input-container-vd {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
   }
   
-  .input-container select {
+  .input-container-vd select {
     padding: 8px;
     border: none;
     border-radius: 4px;
@@ -70,4 +71,80 @@
     background-repeat: no-repeat;
     background-position: right 8px center;
     padding-right: 28px; /* Make space for the arrow */
+  }
+
+  .apply-button-vd {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 16px; /* Increase font size */
+    transition: background-color 0.3s ease;
+  }
+
+  .apply-button-vd:hover {
+    background-color: #0056b3;
+  }
+
+  .input-container-vd {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  }
+
+  .input-container-vd select {
+    margin-right: 35px;
+    padding: 8px 40px 8px 16px; /* Increase right padding for dropdown arrow */
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 16px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5H7z' fill='%23fff'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center; /* Move the arrow icon position */
+    width: 200px; /* Set a fixed width for the dropdown */
+    text-align: center;
+  }
+
+  .input-container-vd select::-ms-expand {
+    display: none;
+  }
+
+  .input-container-vd button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 16px; /* Increase font size */
+    transition: background-color 0.3s ease; /* Add transition for hover effect */
+  }
+
+  .image-container-vd {
+    width: 48%;
+    border: 2px solid white;
+    padding: 10px;
+    background-color: rgb(0, 0, 139, 0.35);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25rem;
+    margin-bottom: 30px;
+  }
+  
+  .satellite-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* This ensures the image stays within the container */
   }
