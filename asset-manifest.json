@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/change-detection-of-satellite-images-website/static/css/main.ec8bb4c7.css",
+    "main.js": "/change-detection-of-satellite-images-website/static/js/main.a7a9bde1.js",
+    "static/media/aboutus.jpeg": "/change-detection-of-satellite-images-website/static/media/aboutus.0b8e0e0dc38ed39a77ef.jpeg",
+    "static/media/featurecard.jpeg": "/change-detection-of-satellite-images-website/static/media/featurecard.bf57a660df8d6ac12807.jpeg",
+    "static/media/satimage.jpeg": "/change-detection-of-satellite-images-website/static/media/satimage.89c30ba1e3ae1c09926f.jpeg",
+    "static/media/cosmos-1853491_1280.jpg": "/change-detection-of-satellite-images-website/static/media/cosmos-1853491_1280.4f5a347198b6301816ca.jpg",
+    "static/media/satbg.jpg": "/change-detection-of-satellite-images-website/static/media/satbg.f01bc0a5190a5da89465.jpg",
+    "index.html": "/change-detection-of-satellite-images-website/index.html",
+    "main.ec8bb4c7.css.map": "/change-detection-of-satellite-images-website/static/css/main.ec8bb4c7.css.map",
+    "main.a7a9bde1.js.map": "/change-detection-of-satellite-images-website/static/js/main.a7a9bde1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ec8bb4c7.css",
+    "static/js/main.a7a9bde1.js"
+  ]
+}
